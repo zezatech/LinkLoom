@@ -1,0 +1,16 @@
+[[headers]]
+  for = "*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Headers = "Content-Type"
+    Access-Control-Allow-Methods = "GET, POST, OPTIONS"
+
+[build]
+  functions = "functions"
+  timeout = 300
+
+[[redirects]]
+  to="/.netlify/functions/server/:splat"
+  from="/*"
+  status=200
+
