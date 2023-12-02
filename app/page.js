@@ -79,6 +79,7 @@ export default function Home() {
           </div>
         </main>
       </div>
+      <img src="poweredby.svg" className="fixed bottom-5 right-5" />
     </section>
   );
 }

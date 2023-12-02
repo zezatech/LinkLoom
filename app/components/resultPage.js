@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Download, Copy, RefreshCw, ExternalLink } from "lucide-react";
 import { Label } from "@/components/ui/label";
+import { Separator } from "@/components/ui/separator";
 
 export default function ResultPage({
   shortLink,
@@ -31,7 +32,10 @@ export default function ResultPage({
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="flex flex-col md:flex-row items-center justify-between">
+      <div className="flex flex-col space-y-2  items-center justify-between">
+        <h4 className="scroll-m-20 text-lg font-medium tracking-tight">
+          Scan this QR code to visit your link.
+        </h4>
         <ReactQr
           id="imageQR"
           text={shortLink}
@@ -41,41 +45,44 @@ export default function ResultPage({
           bgSrc={qrImage}
           logoScale={0.3}
         />
-        <div className="flex flex-col items-center justify-center gap-y-10">
-          <h4 className="scroll-m-20 text-lg font-medium tracking-tight">
-            Scan this QR code to visit your link.
-          </h4>
-          <Button onClick={() => downloadImage()}>
-            <Download className="mr-2 h-4 w-4" />
-            Download QR code
-          </Button>
-        </div>
+        <Button className="w-full" onClick={() => downloadImage()}>
+          <Download className="mr-2 h-5 w-5" />
+          Download QR code
+        </Button>
       </div>
 
+      <div className="flex flex-row pt-10 justify-center items-center space-x-5">
+        <Separator className="w-28 md:w-52" />
+        <span>Or</span>
+        <Separator className="w-28 md:w-52" />
+      </div>
       <div className="grid w-full items-center pt-12">
         <Label className="pb-2" htmlFor="email">
           Shorten Link
         </Label>
-        <Input type="text" value={shortLink} disabled />
+        <div className="flex flex-col md:flex-row items-stretch space-y-2 md:space-y-0  md:items-center justify-around space-x-2 w-full">
+          <div className="relative w-full flex flex-row">
+            <Input type="email" value={shortLink} disabled />
+            <Copy
+              onClick={(e) => copyLink(e)}
+              className="absolute h-4 w-4 right-0 mt-3 mr-2 cursor-pointer"
+            />
+          </div>
+          <Button asChild>
+            <Link href={`${shortLink}`}>
+              <ExternalLink className="mr-2 h-4 w-4" />
+              Open Link
+            </Link>
+          </Button>
+        </div>
       </div>
-      <div className="flex flex-col md:flex-row items-stretch space-y-2 md:space-y-0  md:items-center justify-around pt-3 w-full">
-        <Button onClick={(e) => copyLink(e)}>
-          <Copy className="mr-2 h-4 w-4" />
-          Copy Link
-        </Button>
 
-        <Button asChild>
-          <Link href={`${shortLink}`}>
-            <ExternalLink className="mr-2 h-4 w-4" />
-            Open Link
-          </Link>
+      <p className="text-sm text-muted-foreground">
+        Do want to shorten another link ?
+        <Button onClick={() => resetForm()} variant="link">
+          Click here
         </Button>
-
-        <Button variant="secondary" onClick={() => resetForm()}>
-          <RefreshCw className="mr-2 h-4 w-4" />
-          Generate New
-        </Button>
-      </div>
+      </p>
     </div>
   );
 }

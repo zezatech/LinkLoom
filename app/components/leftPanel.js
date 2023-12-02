@@ -10,14 +10,14 @@ export default function LeftPanel() {
       />
       <div className="hidden lg:relative lg:block lg:p-12">
         <h3 className="mt-6 text-2xl font-bold text-white sm:text-3xl md:text-4xl">
-          LinkLoom 🔗
+          ZezaLinks 🔗
         </h3>
         <h3 className="mt-6 text-2xl font-bold text-white sm:text-3xl md:text-4xl">
-          Weave the Web with LinkLoom !
+          Weave the Web with ZezaLinks !
         </h3>
 
         <p className="mt-4 leading-relaxed text-white/90">
-          🔗 LinkLoom - Your Gateway to Compact URLs! Seamlessly transform long
+          🔗 ZezaLinks - Your Gateway to Compact URLs! Seamlessly transform long
           web addresses into concise, shareable links with our ExpressJS and
           Next.js powered link shortener. Simplify your digital presence today!
           🚀

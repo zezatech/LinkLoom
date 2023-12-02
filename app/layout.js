@@ -4,8 +4,11 @@ import { Toaster } from "@/components/ui/toaster";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "LinkLoom",
-  description: "LinkLoom is a short link service.",
+  title: "ZezaLinks",
+  description: "ZezaLinks is a short link service.",
+  icons: {
+    icon: ["favicon.ico?v=4"],
+  },
 };
 
 export default function RootLayout({ children }) {
