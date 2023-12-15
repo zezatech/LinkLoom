@@ -34,7 +34,14 @@ router.get("/:shortUrl", async (req, res) => {
     if (!result) return res.sendStatus(404);
     result.visits++;
     await result.save();
-    res.json({ result });
+    if (
+      result.fullLink.startsWith("http://") ||
+      result.fullLink.startsWith("https://")
+    ) {
+      res.redirect(result.fullLink);
+    } else {
+      res.redirect("http://" + result.fullLink);
+    }
   } catch (err) {
     console.error("Error in GET /:shortUrl:", err);
     res.status(500).json({ message: "Internal Server Error" });

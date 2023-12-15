@@ -1,4 +1,8 @@
-import ReactQr from "react-awesome-qr";
+import dynamic from "next/dynamic";
+
+const ReactQr = dynamic(() => import("react-awesome-qr"), {
+  ssr: false,
+});
 import React from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -6,7 +10,6 @@ import { Input } from "@/components/ui/input";
 import { Download, Copy, RefreshCw, ExternalLink } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
-
 export default function ResultPage({
   shortLink,
   copyLink,
