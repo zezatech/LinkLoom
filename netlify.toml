@@ -16,7 +16,10 @@
 [build.environment]
   NEXT_PUBLIC_API_URL = "/.netlify/functions"
 
-
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/server/:splat"
+  status = 200
 
 
 

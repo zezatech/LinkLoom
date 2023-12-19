@@ -27,7 +27,7 @@ export default function Home() {
     });
     setshortLink("");
     axios
-      .post("http://localhost:8080/api/shortUrl", {
+      .post("https://zezalinks.netlify.app/api/shortUrl", {
         fullLink: longLink,
       })
       .then((res) => {
