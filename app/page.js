@@ -35,7 +35,7 @@ export default function Home() {
         toast({
           description: "ShortLink created successfully.",
         });
-        setshortLink(window.origin + "/" + res.data.result.shortLink);
+        setshortLink(window.origin + "/api/" + res.data.result.shortLink);
       })
       .catch((err) => {
         setIsLoading(false);
