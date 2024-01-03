@@ -60,3 +60,12 @@
 .focus-border {
   --tw-ring-offset-width: 0px !important;
 }
+
+.box {
+  display: inline-block;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.img-preview {
+  overflow: hidden;
+}

@@ -3,12 +3,32 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Loader2, Info } from "lucide-react";
+import Demo from "@/lib/imgcropper";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 export default function FormInputs({ makeshortLink, setqrImage, isLoading }) {
   const [longLink, setlongLink] = useState("");
+  const [open, setOpen] = useState(false);
+  const [currentImage, setcurrentImage] = useState(null);
   const setqrcodeImage = (file) => {
     setqrImage(URL.createObjectURL(file[0]));
+    if (file) {
+      setcurrentImage(URL.createObjectURL(file[0]));
+      setOpen(true);
+    }
+  };
+
+  const setCroppedImage = (img) => {
+    setqrImage(img);
+    setOpen(false);
   };
   return (
     <>
@@ -59,6 +79,16 @@ export default function FormInputs({ makeshortLink, setqrImage, isLoading }) {
           You can create customized QR code by uploading your brand logo.
         </AlertDescription>
       </Alert>
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Please crop image in square</DialogTitle>
+            <DialogDescription>
+              <Demo currentImage={currentImage} croppedImg={setCroppedImage} />
+            </DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
     </>
   );
 }
