@@ -14,7 +14,7 @@ export default function FormInputs({ makeshortLink, setqrImage, isLoading }) {
     <>
       <form action="#" className="mt-8 grid grid-cols-6 gap-4">
         <div className="col-span-6">
-          <Label htmlFor="picture">Enter link to shorten</Label>
+          <Label htmlFor="picture">Enter your brand URL/ link</Label>
 
           <Input
             type="text"
